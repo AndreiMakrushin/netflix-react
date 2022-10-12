@@ -7,10 +7,7 @@ import Error from "../error/Error";
 
 
 class RandomChar extends Component {
-    constructor(props) {
-        super(props);
-        this.updateChar();
-    }
+
     state = {
         char: {},
         loading: true,
@@ -18,6 +15,10 @@ class RandomChar extends Component {
     }
 
     marvelService = new MarvelService();
+
+    componentDidMount() {
+        setInterval(this.updateChar,5000)
+    }
 
     onCharLoaded = (char) =>{
         this.setState({char, loading: false})
